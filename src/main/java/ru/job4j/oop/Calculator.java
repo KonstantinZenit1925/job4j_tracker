@@ -8,7 +8,7 @@ public class Calculator {
     }
 
     public static int minus(int z) {
-        return x - z;
+        return z - x;
     }
 
     public int multiply(int a) {
@@ -20,13 +20,13 @@ public class Calculator {
     }
 
     public int sumAllOperation(int d) {
-        return sum(10) + multiply(5) + divide(5);
+        return sum(d) + minus(d) + multiply(d) + divide(d);
     }
 
     public static void main(String[] args) {
         int result = sum(10);
         System.out.println("Статичный метод вычисления суммы: " + result);
-        int result2 = minus(2);
+        int result2 = minus(25);
         System.out.println("Статичный метод вычисления  разности: " + result2);
         Calculator calculator = new Calculator();
         int rsl = calculator.multiply(5);
@@ -34,6 +34,6 @@ public class Calculator {
         int rsl3 = calculator.sumAllOperation(10);
         System.out.println("Нестатический метод вычисления произведения: " + rsl);
         System.out.println("Нестатический метод вычисления деления: " + rsl2);
-        System.out.println("Нестатический метод результат суммирования всех операций (сумма, произведение и деление): " + rsl3);
+        System.out.println("Нестатический метод результат суммирования всех операций: " + rsl3);
     }
 }
