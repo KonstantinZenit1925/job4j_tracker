@@ -3,7 +3,6 @@ package ru.job4j.pojo;
 import java.time.LocalDateTime;
 
 public class Student {
-
     private String name;
     private int group;
     private final LocalDateTime data = LocalDateTime.now();
