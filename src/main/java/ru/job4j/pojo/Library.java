@@ -1,7 +1,6 @@
 package ru.job4j.pojo;
 
 import java.util.Objects;
-
 public class Library {
     public static void main(String[] args) {
         Book book1 = new Book("Фантастика", 500);
