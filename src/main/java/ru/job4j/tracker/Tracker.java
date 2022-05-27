@@ -86,7 +86,7 @@ public class Tracker {
             item.setId(id);
             items[index] = item;
         }
-        return result;
+        return true;
     }
 
     /** Метод удаления заявки.
@@ -99,6 +99,6 @@ public class Tracker {
             items[size - 1] = null;
             size--;
         }
-        return result;
+        return true;
     }
 }
