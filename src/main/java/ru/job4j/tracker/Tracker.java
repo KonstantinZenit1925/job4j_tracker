@@ -1,7 +1,6 @@
 package ru.job4j.tracker;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 public class Tracker {
     /**Поле private Item[] items = new Item[100] содержит возможное количество заявлений.
@@ -25,18 +24,10 @@ public class Tracker {
     }
 
     public Item findById(int id) {
-        /**Метод public Item findById(int id) проверяет в цикле все элементы массива items,
-         * сравнивая id с аргументом int id и возвращает найденный Item. Если Item не найден - возвращает null.
-         */
-        Item rsl = null;
-        for (int index = 0; index < size; index++) {
-            Item item = items[index];
-            if (item.getId() == id) {
-                rsl = item;
-                break;
-            }
-        }
-        return rsl;
+        /**Метод public Item findById(int id) Находим индекс.
+         * Если индекс найден возвращаем item, иначе null */
+        int index = indexOf(id);
+        return index != -1 ? items[index] : null;
     }
 
     public Item[] findAll() {
@@ -52,7 +43,7 @@ public class Tracker {
 
     public Item[] findByName(String key) {
         /**
-         * проверяет в цикле все элементы массива items, сравнивая name
+         * Метод проверяет в цикле все элементы массива items, сравнивая name
          * (используя метод getName класса Item) с аргументом метода String key.
          * Элементы, у которых совпадает name, копирует в результирующий массив и возвращает его.
          * Алгоритм этого метода аналогичен методу findAll.
@@ -67,5 +58,31 @@ public class Tracker {
             }
         }
         return Arrays.copyOf(items2, count);
+    }
+
+    /**
+     * Метод, который будет возвращать index по id.
+     * indexOf объявлен как private, потому что он используется только внутри системы.
+     */
+    private int indexOf(int id) {
+        int rsl = -1;
+        for (int index = 0; index < size; index++) {
+            if (items[index].getId() == id) {
+                rsl = index;
+                break;
+            }
+        }
+        return rsl;
+
+    }
+
+    /**
+     * Метод замены заявки. Tracker.replace
+     */
+    public boolean replace(int id, Item item) {
+        int index = indexOf(id);
+        item.setId(id);
+        items[index] = item;
+        return true;
     }
 }
