@@ -22,42 +22,42 @@ public class Tracker {
         items[size++] = item;
         return item;
     }
+    /** Метод public Item findById(int id) Находим индекс.
+     * * Если индекс найден возвращаем item, иначе null */
 
     public Item findById(int id) {
-        /**Метод public Item findById(int id) Находим индекс.
-         * Если индекс найден возвращаем item, иначе null */
         int index = indexOf(id);
         return index != -1 ? items[index] : null;
     }
+    /**
+     * Метод public Item[] findAll() возвращает копию массива items без null элементов (без пустых ячеек).
+     * Перебирать все 100 элементов не нужно. У нас есть поле size.
+     * Это поле и есть размер нового массива.
+     * Чтобы получить новый массив, нужно использовать метод Arrays.copyOf.
+     * Этот метод принимает два параметра: массив элементов и новый размер.
+     */
 
     public Item[] findAll() {
-        /**
-         * Метод public Item[] findAll() возвращает копию массива items без null элементов (без пустых ячеек).
-         * Перебирать все 100 элементов не нужно. У нас есть поле size.
-         * Это поле и есть размер нового массива.
-         * Чтобы получить новый массив, нужно использовать метод Arrays.copyOf.
-         * Этот метод принимает два параметра: массив элементов и новый размер.
-         */
-        return Arrays.copyOf(items, 100);
+        return Arrays.copyOf(items, size);
     }
+    /**
+     * Метод проверяет в цикле все элементы массива items, сравнивая name
+     * (используя метод getName класса Item) с аргументом метода String key.
+     * Элементы, у которых совпадает name, копирует в результирующий массив и возвращает его.
+     * Алгоритм этого метода аналогичен методу findAll.
+     */
 
     public Item[] findByName(String key) {
-        /**
-         * Метод проверяет в цикле все элементы массива items, сравнивая name
-         * (используя метод getName класса Item) с аргументом метода String key.
-         * Элементы, у которых совпадает name, копирует в результирующий массив и возвращает его.
-         * Алгоритм этого метода аналогичен методу findAll.
-         */
-        Item[] items2 = new Item[this.items.length];
+        Item[] result = new Item[size];
         int count = 0;
         for (int i = 0; i < size; i++) {
-            if (items[i].getName().contains(key)) {
+            if (items[i].getName().equals(key)) {
                 System.out.println(items[i].getName());
-                items2[count] = this.items[i];
+                result[count] = this.items[i];
                 count++;
             }
         }
-        return Arrays.copyOf(items2, count);
+        return Arrays.copyOf(result, count);
     }
 
     /**
