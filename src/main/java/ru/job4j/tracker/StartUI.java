@@ -16,6 +16,8 @@ public class StartUI {
      * 5. выводим сообщение пользователю с номером заявки "Добавленная заявка: " + item
      * Следующий блок позволяет реализовать вывод всех заявок если пункт меню будет 1. Вывести все заявки, а
      * если их нет, то сообщение что хранилище пусто
+     * Следующий блок позволяет реализовать вывод всех заявок если пункт меню будет 2
+     * Здесь мы выводим информацию для пользователя, а так же создаем проверку на ошибку при замене заявки
      */
     public void init(Scanner scanner, Tracker tracker) {
         boolean run = true;
@@ -40,7 +42,19 @@ public class StartUI {
                 } else {
                     System.out.println("Хранилище еще не содержит заявок");
                 }
-            } else if (select == 6) {
+            }  else if (select == 2) {
+                System.out.println("=== Edit item ===");
+                System.out.print("Enter id: ");
+                int id = Integer.parseInt(scanner.nextLine());
+                System.out.print("Enter name: ");
+                String name = scanner.nextLine();
+                Item item = new Item(name);
+                if (tracker.replace(id, item)) {
+                    System.out.println("Заявка изменена успешно.");
+                } else {
+                    System.out.println("Ошибка замены заявки.");
+                }
+            }    else if (select == 6) {
                 run = false;
             }
         }
