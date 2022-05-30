@@ -7,6 +7,12 @@ public class StartUI {
      * Сделае вечный цикл while в метод init() внутри которого будем вызывать метод showMenu()
      * int select = Integer.parseInt(scanner.nextLine()) это перменная проиницилизирована методом
      * который отвечает за ввод с консоли, по аналогии с тем как мы делали в предыдущих заданиях.
+     * Далее в блоке if
+     * 1. Сообщить пользователю, что мы находимся в пункте добавления новой заявки в хранилище;
+     * 2. Сообщить пользователю, что он должен ввести имя для создания заявки;
+     * 3. Создать новую заявку с именем, которое мы ввели с консоли;
+       4. Добавить заявку в хранилище Tracker.
+       5. выводим сообщение пользователю с номером заявки
      */
     public void init(Scanner scanner, Tracker tracker) {
         boolean run = true;
@@ -14,13 +20,17 @@ public class StartUI {
             showMenu();
             System.out.print("Select: ");
             int select = Integer.parseInt(scanner.nextLine());
-            if (select != 6) {
-                System.out.println("Пользователь выбрал: " + select);
-            } else {
+            if (select == 0) {
+                System.out.println("=== Create a new Item ===");
+                System.out.print("Enter name: ");
+                String name = scanner.nextLine();
+                Item item = new Item(name);
+                tracker.add(item);
+                System.out.println("Добавленная заявка: " + item);
+            } else if (select == 6) {
                 run = false;
             }
         }
-
     }
 
     /**
