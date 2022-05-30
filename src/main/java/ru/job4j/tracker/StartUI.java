@@ -20,6 +20,9 @@ public class StartUI {
      * Здесь мы выводим информацию для пользователя, используем метод реплейс а так же создаем проверку на ошибку при замене заявки
      * Следующий блок позволяет реализовать удаление заявок если пункт меню будет 3
      * Здесь мы удаляем заявку с помощью метода делит, и выводим сообщения
+     * Меню 4
+     * Позволяет найти заявку по id, используем метод для поиска заявки по id в классе
+     * Tracker предназначен вспомогательный метод indexOf() который используется в методе findById():
      */
     public void init(Scanner scanner, Tracker tracker) {
         boolean run = true;
@@ -64,6 +67,16 @@ public class StartUI {
                     System.out.println("Заявка удалена успешно.");
                 } else {
                     System.out.println("Ошибка удаления заявки.");
+                }
+            } else if (select == 4) {
+                System.out.println("=== Find item by id ===");
+                System.out.print("Enter id: ");
+                int id = Integer.parseInt(scanner.nextLine());
+                Item item = tracker.findById(id);
+                if (item != null) {
+                    System.out.println(item);
+                } else {
+                    System.out.println("Заявка с введенным id: " + id + " не найдена.");
                 }
             } else if (select == 6) {
                 run = false;
