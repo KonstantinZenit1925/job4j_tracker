@@ -23,6 +23,8 @@ public class StartUI {
      * Меню 4
      * Позволяет найти заявку по id, используем метод для поиска заявки по id в классе
      * Tracker предназначен вспомогательный метод indexOf() который используется в методе findById():
+     * Меню 5
+     * Ищем заявку по названию, используем findByName
      */
     public void init(Scanner scanner, Tracker tracker) {
         boolean run = true;
@@ -77,6 +79,18 @@ public class StartUI {
                     System.out.println(item);
                 } else {
                     System.out.println("Заявка с введенным id: " + id + " не найдена.");
+                }
+            }  else if (select == 5) {
+                System.out.println("=== Find items by name ===");
+                System.out.print("Enter name: ");
+                String name = scanner.nextLine();
+                Item[] items = tracker.findByName(name);
+                if (items.length > 0) {
+                    for (Item item : items) {
+                        System.out.println(item);
+                    }
+                } else {
+                    System.out.println("Заявки с именем: " + name + " не найдены.");
                 }
             } else if (select == 6) {
                 run = false;
