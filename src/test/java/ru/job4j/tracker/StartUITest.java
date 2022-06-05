@@ -171,4 +171,53 @@ public class StartUITest {
         ));
     }
 
+    @Test
+    public void whenFindAllActionItemHaveTestOutputIsSuccessfully() {
+        Output output = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item one = tracker.add(new Item("test1000"));
+        Input in = new StubInput(new String[]{"0", String.valueOf(one.getId()), "1"});
+        UserAction[] actions = new UserAction[]{
+                new FindAllAction(output),
+                new ExitAction(output)
+        };
+        new StartUI(output).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(output.toString(), is(
+                "Menu:" + ln
+                        + "0. Show all items" + ln
+                        + "1. Exit Program" + ln
+                        + "=== Show all items ===" + ln
+                        + one + ln
+                        + "Menu:" + ln
+                        + "0. Show all items" + ln
+                        + "1. Exit Program" + ln
+        ));
+    }
+
+    @Test
+    public void whenFindByNameActionItemHaveTestOutputIsSuccessfully() {
+        Output output = new StubOutput();
+        Tracker tracker = new Tracker();
+        String findName = "test1";
+        Item one = tracker.add(new Item("test1"));
+        Input in = new StubInput(new String[]{"0", findName, "1"});
+        UserAction[] actions = new UserAction[]{
+                new FindByNameAction(output),
+                new ExitAction(output)
+        };
+        new StartUI(output).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(output.toString(), is(
+                "Menu:" + ln
+                        + "0. Find items by name" + ln
+                        + "1. Exit Program" + ln
+                        + "=== Find items by name ===" + ln
+                        + one + ln
+                        + "Menu:" + ln
+                        + "0. Find items by name" + ln
+                        + "1. Exit Program" + ln
+        ));
+    }
+
 }
