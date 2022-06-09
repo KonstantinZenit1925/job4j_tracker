@@ -33,10 +33,6 @@ public class SingleTracker {
         return tracker.findByName(key);
     }
 
-    private int indexOf(int id) {
-        return id;
-    }
-
     public boolean replace(int id, Item item) {
         return tracker.replace(id, item);
     }
