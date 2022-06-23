@@ -11,8 +11,8 @@ public class UniqueText {
         for (String name : origin) {
             check.add(name);
         }
-        for (String name2 : text) {
-            if (!check.contains(name2)) {
+        for (String cell : text) {
+            if (!check.contains(cell)) {
                 rsl = false;
                 break;
             }
