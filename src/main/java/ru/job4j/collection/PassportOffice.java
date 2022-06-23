@@ -1,6 +1,5 @@
-package ru.job4j;
+package ru.job4j.collection;
 
-import ru.job4j.collection.Citizen;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,6 +11,7 @@ public class PassportOffice {
         boolean rsl = false;
         if (!citizens.containsKey(citizen)) {
             citizens.put(citizen.getPassport(), citizen);
+            return true;
         }
         return rsl;
     }
