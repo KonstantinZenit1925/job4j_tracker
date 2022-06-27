@@ -1,12 +1,15 @@
 package ru.job4j.tracker;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Tracker {
+
     /**Поле private Item[] items = new Item[100] содержит возможное количество заявлений.
      Оно у нас ограничено сотней позиций. **/
-    private final Item[] items = new Item[100];
-    private int ids = 1;
+    
+    private final List<Item> items = new ArrayList<>();
     private int size = 0;
 
     /**
@@ -18,8 +21,7 @@ public class Tracker {
      * Аналогичный подход используется в базах данных.
      */
     public Item add(Item item) {
-        item.setId(ids++);
-        items[size++] = item;
+        items.add(item);
         return item;
     }
     /** Метод public Item findById(int id) Находим индекс.
@@ -27,30 +29,36 @@ public class Tracker {
 
     public Item findById(int id) {
         int index = indexOf(id);
-        return index != -1 ? items[index] : null;
+        return index != -1 ? items.get(index) : null;
     }
     /**
      * Метод public Item[] findAll() возвращает копию массива items без null элементов (без пустых ячеек).
 
      */
 
-    public Item[] findAll() {
-        return Arrays.copyOf(items, size);
+    public List<Item> findAll() {
+        for (Item item: items) {
+            if (item != null) {
+                items.add(item);
+            }
+        }
+        return items;
     }
     /**
      * Метод проверяет в цикле все элементы массива items, сравнивая name
      * (используя метод getName класса Item) с аргументом метода String key.
      * Элементы, у которых совпадает name, копирует в результирующий массив и возвращает его.
      * Алгоритм этого метода аналогичен методу findAll.
+     * @return
      */
 
     public Item[] findByName(String key) {
         Item[] result = new Item[size];
         int count = 0;
         for (int i = 0; i < size; i++) {
-            if (items[i].getName().equals(key)) {
-                System.out.println(items[i].getName());
-                result[count] = this.items[i];
+            if (items.get(i).getName().equals(key)) {
+                System.out.println(items.get(i).getName());
+                result[count] = this.items.get(i);
                 count++;
             }
         }
@@ -64,7 +72,7 @@ public class Tracker {
     private int indexOf(int id) {
         int rsl = -1;
         for (int index = 0; index < size; index++) {
-            if (items[index].getId() == id) {
+            if (items.get(index).getId() == id) {
                 rsl = index;
                 break;
             }
@@ -81,7 +89,7 @@ public class Tracker {
         boolean result = index != -1;
         if (result) {
             item.setId(id);
-            items[index] = item;
+            items.set(index, item);
         }
         return result;
     }
@@ -94,7 +102,7 @@ public class Tracker {
         boolean result = index != -1;
         if (result) {
             System.arraycopy(items, index + 1, items, index, size - index - 1);
-            items[size - 1] = null;
+            items.set(size - 1, null);
             size--;
         }
         return result;
