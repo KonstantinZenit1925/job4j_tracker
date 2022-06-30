@@ -10,6 +10,7 @@ public class Tracker {
      Оно у нас ограничено сотней позиций. **/
     
     private final List<Item> items = new ArrayList<>();
+    private int ids = 1;
     private int size = 0;
 
     /**
@@ -21,6 +22,7 @@ public class Tracker {
      * Аналогичный подход используется в базах данных.
      */
     public Item add(Item item) {
+        item.setId(ids++);
         items.add(item);
         return item;
     }
@@ -37,12 +39,7 @@ public class Tracker {
      */
 
     public List<Item> findAll() {
-        for (Item item: items) {
-            if (item != null) {
-                items.add(item);
-            }
-        }
-        return items;
+        return List.copyOf(items);
     }
     /**
      * Метод проверяет в цикле все элементы массива items, сравнивая name
@@ -52,17 +49,14 @@ public class Tracker {
      * @return
      */
 
-    public Item[] findByName(String key) {
-        Item[] result = new Item[size];
-        int count = 0;
-        for (int i = 0; i < size; i++) {
-            if (items.get(i).getName().equals(key)) {
-                System.out.println(items.get(i).getName());
-                result[count] = this.items.get(i);
-                count++;
+    public List<Item> findByName(String key) {
+        List<Item> list = new ArrayList<>();
+        for (Item item: items) {
+            if (item != null && item.getName().equals(key)) {
+                list.add(item);
             }
         }
-        return Arrays.copyOf(result, count);
+        return list;
     }
 
     /**
@@ -71,7 +65,7 @@ public class Tracker {
      */
     private int indexOf(int id) {
         int rsl = -1;
-        for (int index = 0; index < size; index++) {
+        for (int index = 0; index < items.size(); index++) {
             if (items.get(index).getId() == id) {
                 rsl = index;
                 break;
@@ -101,9 +95,7 @@ public class Tracker {
         int index = indexOf(id);
         boolean result = index != -1;
         if (result) {
-            System.arraycopy(items, index + 1, items, index, size - index - 1);
-            items.set(size - 1, null);
-            size--;
+            items.remove(index);
         }
         return result;
     }
