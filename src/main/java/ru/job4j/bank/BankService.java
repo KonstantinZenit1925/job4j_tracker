@@ -6,15 +6,21 @@ import java.util.List;
 import java.util.Map;
 
 public class BankService {
-    /** Поле содержит всех пользователей системы с привязанными к ним счетами: */
+    /**
+     * Поле содержит всех пользователей системы с привязанными к ним счетами:
+     */
     private final Map<Users, List<Account>> users = new HashMap<>();
 
-    /** Метод добавляет пользователя в систему */
+    /**
+     * Метод добавляет пользователя в систему
+     */
     public void addUser(Users user) {
-    users.putIfAbsent(user, new ArrayList<>());
+        users.putIfAbsent(user, new ArrayList<>());
     }
 
-    /** Метод добавляет новый счет к пользователю */
+    /**
+     * Метод добавляет новый счет к пользователю
+     */
     public void addAccount(String passport, Account account) {
         Users user = findByPassport(passport);
         List<Account> accounts = users.get(user);
@@ -23,8 +29,10 @@ public class BankService {
         }
 
     }
-    /** Метод ищет пользователя по номеру паспорта
-     * @return*/
+
+    /**
+     * Метод ищет пользователя по номеру паспорта
+     */
     public Users findByPassport(String passport) {
         for (Users user : users.keySet()) {
             if (user.getPassports().equals(passport)) {
@@ -33,7 +41,10 @@ public class BankService {
         }
         return null;
     }
-    /** Метод ищет счет пользователя по реквизитам */
+
+    /**
+     * Метод ищет счет пользователя по реквизитам
+     */
     public Account findByRequisite(String passport, String requisite) {
         Users user = findByPassport(passport);
         if (user != null) {
@@ -45,7 +56,10 @@ public class BankService {
         }
         return null;
     }
-    /** Метод предназначен для перечисления денег с одного счёта на другой счёт*/
+
+    /**
+     * Метод предназначен для перечисления денег с одного счёта на другой счёт
+     */
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         Account srcAccount = findByRequisite(srcPassport, srcRequisite);
