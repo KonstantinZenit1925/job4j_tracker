@@ -1,6 +1,7 @@
-package ru.job4j.collection;
+package ru.job4j.inheritance.collection;
 
 import org.junit.Test;
+import ru.job4j.collection.ConvertList2Array;
 
 import java.util.Arrays;
 
@@ -19,7 +20,7 @@ public class ConvertList2ArrayTest {
                 {4, 5, 6},
                 {7, 0, 0}
         };
-        assertThat(result, is(expect));
+        MatcherAssert.assertThat(result, Is.is(expect));
     }
 
     @Test
@@ -33,6 +34,6 @@ public class ConvertList2ArrayTest {
                 {3, 4},
                 {5, 0}
         };
-        assertThat(result, is(expect));
+        MatcherAssert.assertThat(result, Is.is(expect));
     }
 }

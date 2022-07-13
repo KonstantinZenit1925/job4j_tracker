@@ -1,6 +1,8 @@
-package ru.job4j.collection;
+package ru.job4j.inheritance.collection;
 
 import org.junit.Test;
+import ru.job4j.collection.ConvertMatrix2List;
+
 import java.util.Arrays;
 import java.util.List;
 import static org.hamcrest.core.Is.is;
@@ -18,6 +20,6 @@ public class ConvertMatrix2ListTest {
                 1, 2, 3, 4
         );
         List<Integer> result = list.toList(input);
-        assertThat(result, is(expect));
+        Assert.assertThat(result, Is.is(expect));
     }
 }

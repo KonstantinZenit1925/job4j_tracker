@@ -1,6 +1,7 @@
-package ru.job4j.collection;
+package ru.job4j.inheritance.collection;
 
 import org.junit.Test;
+import ru.job4j.collection.User;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -17,8 +18,8 @@ public class UserTest {
         users.add(new User("Petr", 32));
         users.add(new User("Ivan", 31));
         Iterator<User> it = users.iterator();
-        assertThat(it.next(), is(new User("Ivan", 31)));
-        assertThat(it.next(), is(new User("Petr", 32)));
+        MatcherAssert.assertThat(it.next(), Matchers.is(new User("Ivan", 31)));
+        MatcherAssert.assertThat(it.next(), Matchers.is(new User("Petr", 32)));
     }
 
     @Test
@@ -40,7 +41,7 @@ public class UserTest {
                         new User("Petr", 35)
                 )
         );
-        assertThat(users, is(expected));
+        MatcherAssert.assertThat(users, Matchers.is(expected));
     }
 
     @Test
@@ -49,7 +50,7 @@ public class UserTest {
                 .compareTo(
                         new User("Ivan", 31)
                 );
-        assertThat(rsl, greaterThan(0));
+        MatcherAssert.assertThat(rsl, Matchers.greaterThan(0));
     }
 
     @Test
@@ -58,6 +59,6 @@ public class UserTest {
                 .compareTo(
                         new User("Petr", 32)
                 );
-        assertThat(rsl, lessThan(0));
+        MatcherAssert.assertThat(rsl, Matchers.lessThan(0));
     }
 }

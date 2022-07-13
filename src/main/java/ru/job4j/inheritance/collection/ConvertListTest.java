@@ -1,6 +1,7 @@
-package ru.job4j.collection;
+package ru.job4j.inheritance.collection;
 
 import org.junit.Test;
+import ru.job4j.collection.ConvertList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,6 +17,6 @@ public class ConvertListTest {
         in.add(new int[] {1});
         in.add(new int[] {2, 3});
         List<Integer> expect = Arrays.asList(1, 2, 3);
-        assertThat(ConvertList.convert(in), is(expect));
+        Assert.assertThat(ConvertList.convert(in), Is.is(expect));
     }
 }

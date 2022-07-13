@@ -1,6 +1,8 @@
-package ru.job4j.collection;
+package ru.job4j.inheritance.collection;
 
 import org.junit.Test;
+import ru.job4j.collection.Account;
+import ru.job4j.collection.NotifyAccount;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -23,7 +25,7 @@ public class NotifyAccountTest {
                         new Account("142", "Petr Arsentev", "000001")
                 )
         );
-        assertThat(NotifyAccount.sent(accounts), is(expect));
+        Assert.assertThat(NotifyAccount.sent(accounts), Is.is(expect));
     }
 
     @Test
@@ -40,7 +42,7 @@ public class NotifyAccountTest {
                         new Account("142", "Petr Arsentev", "000001")
                 )
         );
-        assertThat(NotifyAccount.sent(accounts), is(expect));
+        Assert.assertThat(NotifyAccount.sent(accounts), Is.is(expect));
     }
 
 }

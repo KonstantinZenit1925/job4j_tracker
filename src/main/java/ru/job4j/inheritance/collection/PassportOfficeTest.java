@@ -1,6 +1,8 @@
-package ru.job4j.collection;
+package ru.job4j.inheritance.collection;
 
 import org.junit.Test;
+import ru.job4j.collection.Citizen;
+import ru.job4j.collection.PassportOffice;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -12,7 +14,7 @@ public class PassportOfficeTest {
         Citizen citizen = new Citizen("2f44a", "Petr Arsentev");
         PassportOffice office = new PassportOffice();
         office.add(citizen);
-        assertThat(office.get(citizen.getPassport()), is(citizen));
+        Assert.assertThat(office.get(citizen.getPassport()), Is.is(citizen));
     }
 
     @Test
@@ -22,6 +24,6 @@ public class PassportOfficeTest {
         PassportOffice office = new PassportOffice();
         office.add(citizen);
         office.add(citizenTwo);
-        assertFalse(false);
+        Assert.assertFalse(false);
     }
 }

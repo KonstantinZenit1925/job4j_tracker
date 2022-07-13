@@ -1,6 +1,8 @@
-package ru.job4j.collection;
+package ru.job4j.inheritance.collection;
 
 import org.junit.Test;
+import ru.job4j.collection.FullSearch;
+import ru.job4j.collection.Task;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -20,6 +22,6 @@ public class FullSearchTest {
                 new Task("1", "First desc")
         );
         Set<String> expected = new HashSet<>(Arrays.asList("1", "2"));
-        assertThat(FullSearch.extractNumber(tasks), is(expected));
+        Assert.assertThat(FullSearch.extractNumber(tasks), Is.is(expected));
     }
 }

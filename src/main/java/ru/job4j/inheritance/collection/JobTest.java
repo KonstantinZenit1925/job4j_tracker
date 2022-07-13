@@ -1,7 +1,8 @@
-package ru.job4j.collection;
+package ru.job4j.inheritance.collection;
 
 import org.junit.Assert;
 import org.junit.Test;
+import ru.job4j.collection.*;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -36,7 +37,7 @@ public class JobTest {
                 new Job("Impl task", 0)
         );
         Collections.sort(jobs, new JobAscendingByName());
-        assertEquals(jobs, expected);
+        Assert.assertEquals(jobs, expected);
     }
 
     @Test
@@ -52,7 +53,7 @@ public class JobTest {
                 new Job("Error next iteration", 4)
         );
         Collections.sort(jobs, new JobAscendingByPriority());
-        assertEquals(jobs, expected);
+        Assert.assertEquals(jobs, expected);
     }
 
     @Test

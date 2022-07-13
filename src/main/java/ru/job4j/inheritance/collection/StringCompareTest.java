@@ -1,6 +1,7 @@
-package ru.job4j.collection;
+package ru.job4j.inheritance.collection;
 
 import org.junit.Test;
+import ru.job4j.collection.StringCompare;
 
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.lessThan;
@@ -15,7 +16,7 @@ public class StringCompareTest {
                 "Ivanov",
                 "Ivanov"
         );
-        assertThat(rst, is(0));
+        Assert.assertThat(rst, Is.is(0));
     }
 
     @Test
@@ -25,7 +26,7 @@ public class StringCompareTest {
                 "Ivanov",
                 "Ivanova"
         );
-        assertThat(rst, lessThan(0));
+        Assert.assertThat(rst, Matchers.lessThan(0));
     }
 
     @Test
@@ -35,7 +36,7 @@ public class StringCompareTest {
                 "Petrov",
                 "Ivanova"
         );
-        assertThat(rst, greaterThan(0));
+        Assert.assertThat(rst, Matchers.greaterThan(0));
     }
 
     @Test
@@ -45,7 +46,7 @@ public class StringCompareTest {
                 "Petrov",
                 "Patrov"
         );
-        assertThat(rst, greaterThan(0));
+        Assert.assertThat(rst, Matchers.greaterThan(0));
     }
 
     @Test
@@ -55,6 +56,6 @@ public class StringCompareTest {
                 "Patrova",
                 "Petrov"
         );
-        assertThat(rst, lessThan(0));
+        Assert.assertThat(rst, Matchers.lessThan(0));
     }
 }
