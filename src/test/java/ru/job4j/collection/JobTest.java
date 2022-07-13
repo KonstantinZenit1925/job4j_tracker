@@ -1,5 +1,6 @@
 package ru.job4j.collection;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -16,10 +17,10 @@ public class JobTest {
     public void whenCompatorByNameAndPrority() {
         Comparator<Job> cmpNamePriority = new JobDescByName().thenComparing(new JobDescByPriority());
         int rsl = cmpNamePriority.compare(
-                new Job("Impl task", 0),
-                new Job("Fix bug", 1)
+                new Job("Impl task", 1),
+                new Job("Impl task", 1)
         );
-        assertThat(rsl, lessThan(0));
+        Assert.assertEquals(rsl, 0);
     }
 
     @Test
@@ -52,5 +53,25 @@ public class JobTest {
         );
         Collections.sort(jobs, new JobAscendingByPriority());
         assertEquals(jobs, expected);
+    }
+
+    @Test
+    public void whenCompatorJobDescByNameLn() {
+        Comparator<Job> cmpNameLn = new JobDescByNameLn().thenComparing(new JobDescByNameLn());
+        int rsl = cmpNameLn.compare(
+                new Job("Impl task", 1),
+                new Job("Implement task", 2)
+        );
+        Assert.assertEquals(rsl, 1);
+    }
+
+    @Test
+    public void whenCompatorByNameAndProrityAndNameLn() {
+        Comparator<Job> cmpNamePriority = new JobDescByName().thenComparing(new JobDescByPriority().thenComparing(new JobDescByNameLn()));
+        int rsl = cmpNamePriority.compare(
+                new Job("Impl task", 1),
+                new Job("Impl task", 1)
+        );
+        Assert.assertEquals(rsl, 0);
     }
 }
