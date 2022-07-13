@@ -16,6 +16,7 @@ public class Users {
 
     /**
      * Геттеры и сеттеры
+     *
      * @return
      */
     public String getPassports() {
@@ -36,6 +37,7 @@ public class Users {
 
     /**
      * Переопределение equals и hashCode()
+     *
      * @param o
      * @return
      */
