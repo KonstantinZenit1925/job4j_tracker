@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Класс описывает Банковский сервис
+ */
 public class BankService {
     /**
      * Поле содержит всех пользователей системы с привязанными к ним счетами:
