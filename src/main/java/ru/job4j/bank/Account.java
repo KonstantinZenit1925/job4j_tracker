@@ -3,6 +3,7 @@ package ru.job4j.bank;
 import java.util.Objects;
 
 /**
+ * Формальное изменение!!
  * Класс описывает модель банковского счета. Эта модель содержит поля: баланс и реквизиты.
  *
  * @author Konstantin Vyazovchenko

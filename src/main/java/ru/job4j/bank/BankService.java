@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /**
+ * Формальное изменение!
  * Класс описывает Банковский сервис
  */
 public class BankService {
