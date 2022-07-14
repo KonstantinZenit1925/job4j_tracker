@@ -1,4 +1,4 @@
-package ru.job4j.inheritance.collection;
+package ru.job4j.collection;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -21,7 +21,7 @@ public class JobTest {
                 new Job("Impl task", 1),
                 new Job("Impl task", 1)
         );
-        Assert.assertEquals(rsl, 0);
+        assertEquals(rsl, 0);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class JobTest {
                 new Job("Impl task", 0)
         );
         Collections.sort(jobs, new JobAscendingByName());
-        Assert.assertEquals(jobs, expected);
+        assertEquals(jobs, expected);
     }
 
     @Test
@@ -53,7 +53,7 @@ public class JobTest {
                 new Job("Error next iteration", 4)
         );
         Collections.sort(jobs, new JobAscendingByPriority());
-        Assert.assertEquals(jobs, expected);
+        assertEquals(jobs, expected);
     }
 
     @Test
@@ -63,16 +63,16 @@ public class JobTest {
                 new Job("Impl task", 1),
                 new Job("Implement task", 2)
         );
-        Assert.assertEquals(rsl, 1);
+        assertEquals(rsl, 1);
     }
 
     @Test
     public void whenCompatorByNameAndProrityAndNameLn() {
-        Comparator<Job> cmpNamePriority = new JobDescByName().thenComparing(new JobDescByPriority().thenComparing(new JobDescByNameLn()));
+        Comparator<Job> cmpNamePriority = new JobDescByName().thenComparing(new JobDescByNameLn()).thenComparing(new JobDescByPriority());
         int rsl = cmpNamePriority.compare(
-                new Job("Impl task", 1),
-                new Job("Impl task", 1)
+                new Job("Impl task", 2),
+                new Job("Implement task", 2)
         );
-        Assert.assertEquals(rsl, 0);
+        assertEquals(rsl, 69);
     }
 }
