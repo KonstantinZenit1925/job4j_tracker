@@ -1,7 +1,10 @@
-package ru.job4j.inheritance.collection;
+package ru.job4j.collection;
 
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
+
+import org.hamcrest.Matchers;
+import org.junit.Assert;
 import org.junit.Test;
 import ru.job4j.collection.LexSort;
 

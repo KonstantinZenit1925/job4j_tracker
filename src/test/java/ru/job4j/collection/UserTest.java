@@ -1,5 +1,7 @@
-package ru.job4j.inheritance.collection;
+package ru.job4j.collection;
 
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.Test;
 import ru.job4j.collection.User;
 
