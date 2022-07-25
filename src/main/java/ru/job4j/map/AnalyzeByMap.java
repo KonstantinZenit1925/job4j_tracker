@@ -1,19 +1,9 @@
 package ru.job4j.map;
-/**
- * Класс AnalyzeByMap получает статистику по аттестатам.
- */
 
 import java.util.*;
 
 public class AnalyzeByMap {
-    /**
-     * Метод averageScore() - вычисляет общий средний балл.
-     * Пробегаем циклом по нашим оценкам, суммируем их, затем сумму оценок делим
-     * Т.к возвращаемое значение double поэтому пришлось приводить int
-     *
-     * @param pupils
-     * @return
-     */
+
     public static double averageScore(List<Pupil> pupils) {
         int result = 0;
         int summaScore = 0;
@@ -26,15 +16,6 @@ public class AnalyzeByMap {
         return summaScore / (double) result;
     }
 
-    /**
-     * Метод averageScoreByPupil() - вычисляет средний балл по каждому ученику.
-     * То есть берем одного ученика и считаем все его баллы за все предметы
-     * и делим на количество предметов.
-     * Возвращает список из объекта Label (имя ученика и средний балл).
-     *
-     * @param pupils
-     * @return
-     */
     public static List<Label> averageScoreByPupil(List<Pupil> pupils) {
         List<Label> resultList = new ArrayList<>();
         for (Pupil pupil : pupils) {
@@ -47,15 +28,6 @@ public class AnalyzeByMap {
         return resultList;
     }
 
-    /**
-     * Метод averageScoreBySubject() - вычисляет средний балл по каждому предмету.
-     * Например, собираем все баллы учеников по предмету география и делим на количество учеников.
-     * Возвращает список из объектов Label (название предмета и средний балл).
-     * https://www.programiz.com/java-programming/library/hashmap/merge
-     *
-     * @param pupils
-     * @return
-     */
     public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
         List<Label> resultList = new ArrayList<>();
         Map<String, Integer> resMap = new LinkedHashMap<>();
@@ -70,14 +42,6 @@ public class AnalyzeByMap {
         return resultList;
     }
 
-    /**
-     * Метод bestStudent() - возвращает лучшего ученика.
-     * Лучшим считается ученик с наибольшим суммарным баллом по всем предметам.
-     * Возвращает объект Label (имя ученика и суммарный балл).
-     *
-     * @param pupils
-     * @return
-     */
     public static Label bestStudent(List<Pupil> pupils) {
         List<Label> resultList = new ArrayList<>();
         for (Pupil pupil : pupils) {
@@ -91,13 +55,6 @@ public class AnalyzeByMap {
         return resultList.get(resultList.size() - 1);
     }
 
-    /**
-     * Метод bestSubject() - возвращает предмет с наибольшим баллом для всех студентов.
-     * Возвращает объект Label (имя предмета, сумма баллов каждого ученика по этому предмету).
-     *
-     * @param pupils
-     * @return
-     */
     public static Label bestSubject(List<Pupil> pupils) {
         List<Label> tempList = new ArrayList<>();
         Map<String, Integer> tempMap = new LinkedHashMap<>();
